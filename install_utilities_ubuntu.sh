@@ -1,7 +1,8 @@
 
 
-sudo apt install lxpolkit flameshot bat lsd zsh fzf ranger -y
+sudo apt install lxpolkit flameshot bat zsh fzf ranger libssl-dev tmux git-y
 
-sudo apt install wezterm -y
+sudo snap install lsd
+#sudo apt install wezterm -y
 # sudo apt install kitty -y
 # sudo apt install alacrity -y

@@ -89,12 +89,12 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -220,10 +220,14 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias ll='lsd -alF'
+alias ldot='ls -ld .*'
+alias ff='find . -type f -name'
 
+# replace ls with lsd and cat with bat
 alias ls='lsd'
 alias cat='bat'
 alias ccat='/bin/cat'
+
 
 
 # Add an "alert" alias for long running commands.  Use like so:
