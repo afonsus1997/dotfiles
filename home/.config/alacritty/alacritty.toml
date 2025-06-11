@@ -1,0 +1,67 @@
+
+[env]
+TERM = "xterm-256color"
+
+[colors.primary]
+background = "#000000"
+foreground = "#ffffff"
+#foreground = "#c5c8c6"
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[font]
+size = 13
+builtin_box_drawing = true
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "Hack Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Hack Nerd Font"
+style = "Italic"
+
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+decorations = "none"
+dynamic_padding = true
+dynamic_title = true
+title = "Terminal"
+startup_mode = "Windowed"
+opacity = 1.0
+
+# Other Things
+
+# Quick system monitor
+[[keyboard.bindings]]
+key = "H"
+mods = "Control|Shift"
+command = { program = "sh", args = ["-c", "i3-msg 'exec --no-startup-id alacritty -e btop'"] }
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "U", mods = "Control|Shift" }
+regex = "(https:|http:|ftp:|file:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+
+[general]
+ import = [
+     "~/.config/alacritty/themes/themes/hyper.toml"
+ ]
