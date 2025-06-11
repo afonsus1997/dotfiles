@@ -83,7 +83,8 @@ bindsym $mod+Shift+0 $exec_i3_groups move-to-number 10
 bindsym $mod+g exec --no-startup-id i3-switch-active-workspace-group
 bindsym $mod+Shift+g exec --no-startup-id i3-assign-workspace-to-group
 bindsym $mod+n exec --no-startup-id i3-focus-on-workspace
-bindsym $mod+Shift+w exec --no-startup-id i3-move-to-workspace
+#bindsym $mod+Shift+w exec --no-startup-id i3-move-to-workspace
+bindsym $mod+Shift+w exec --no-startup-id sh -c 'i3-msg move container to workspace $(echo "1\n2\n3\n4\n5\n6\n7\n8\n9\n10" | rofi -dmenu -p "Move to workspace")'
 bindsym Mod1+Mod4+n exec --no-startup-id i3-rename-workspace
 
 #####################################################################################################################
@@ -215,7 +216,10 @@ mode "$mode_gaps_outer" {
 # Primary launchers
 bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+w exec rofi -show
-bindsym $mod+Return exec wezterm -e 'tmux'; focus
+#bindsym $mod+Return exec kitty -e 'tmux';focus
+#bindsym $mod+Return exec wezterm -e 'tmux';focus
+bindsym $mod+Return exec --no-startup-id alacritty -e 'tmux';focus
+#bindsym control+mod1+t exec --no-startup-id gnome-terminal; focus
 
 # Alternative launchers
 bindsym mod1+F2 exec --no-startup-id gmrun
@@ -378,7 +382,7 @@ exec --no-startup-id conky -c ~/.config/i3/system-overview
 exec --no-startup-id conky -c ~/.config/i3/system-shortcuts
 
 # Keyboard layout
-exec "setxkbmap -layout pt,us -option 'grp:alt_shift_toggle'"
+exec "setxkbmap -layout pt,us\(intl\) -option 'grp:alt_shift_toggle'"
 
 # Java applications fix
 exec export _JAVA_AWT_WM_NONREPARENTING=1
