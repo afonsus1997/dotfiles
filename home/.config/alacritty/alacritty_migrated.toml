@@ -1,0 +1,18 @@
+background_opacity = 0.8
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[font]
+size = 13
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[window]
+decorations = "full"
+dynamic_padding = true
+dynamic_title = true
+title = "Terminal"

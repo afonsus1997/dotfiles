@@ -7,7 +7,7 @@ zmodload zsh/zprof
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/afonsom/.oh-my-zsh"
+export ZSH="/home/amrm/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -89,12 +89,12 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -219,16 +219,8 @@ timezsh() {
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias ll='lsd -alF'
 alias ldot='ls -ld .*'
 alias ff='find . -type f -name'
-
-# replace ls with lsd and cat with bat
-alias ls='lsd'
-alias cat='bat'
-alias ccat='/bin/cat'
-
-
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -242,16 +234,29 @@ alias logs="find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1
 
 
 ### AM Aliases
+
+alias lcc='/usr/local/versat/lcc/lcc'
+#alias codecomposer='/home/afonsom/ti/ccs920/ccs/eclipse/ccstudio'
+alias flatsatpipe='ssh -NTL 6969:localhost:6969 egse-flatsat'
+alias safesatpipe='ssh -NTL 6969:localhost:6969 egse-safesat'
+alias vpnup='sudo systemctl start wg-quick@wg0 && sudo systemctl status wg-quick@wg0'
+alias vpndown='sudo systemctl stop wg-quick@wg0'
 alias lnexample='echo ln -s /path/to/file /path/to/symlink'
-#alias srcvivado='source /media/Dados/Xilinx/Vivado/2021.2/settings64.sh'
+alias manjaromouse='sudo modprobe -r psmouse && sudo modprobe -a psmouse'
+alias mixer='alsamixer'
+alias srcvivado='source /media/Dados/Xilinx_vers/2023_2/Vivado/2023.2/settings64.sh'
+alias vitis="export GTK_THEME=Adwaita:light && vitis --classic"    
 
 ### ISTSAT stuff
+
 alias flash-obc='PROJECT=OBCMain TARGET_ARCH=ARCH_OBC make flashP'
 alias flash-eps='PROJECT=EPSMain TARGET_ARCH=ARCH_EPS make flashP'
 alias flash-com='PROJECT=COMMain TARGET_ARCH=ARCH_COM make flashP'
 alias flash-pl='PROJECT=PLMain TARGET_ARCH=ARCH_PLM4 make flashP'
 alias sat='cd ~/Github/ISTSAT-Software'
-#alias ISTSATscreen='~/ISTSAT-screenlayout.sh'
+alias ISTSATscreen='~/ISTSAT-screenlayout.sh'
+#source ~/.zshrc_gsctl.sh
+#eval(_GSCTL_COMPLETE=source_zsh gsctl)
 
 ### Others
 
@@ -260,31 +265,68 @@ export HOSTNAME
 
 export no_proxy=localhost,127.0.0.1,web,webster,xinc,author.xilinx.com,jira.xilinx.com,*.xilinx.com
 
+pip3.7() {
+	python3.7 -m pip "$@"
+}
+
 #add gcc arm to path
 export PATH="$PATH:/opt/gcc-arm/bin"
 
 #add .local/bin to path
 export PATH="$PATH:/home/armr/.local/bin"
 
+#things
 if [ -d ~/bin ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
-#add fzf search
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 xset r rate 220 40
 
+#Capsim eviroment
+export CAPSIM=/opt/Capsim_V6
+export LD_LIBRARY_PATH=$CAPSIM/LIBS
+
 #spinWorks stuff
 alias athena_login='sudo /home/armr/athena.sh amrm'
+alias ll='lsd -alF'
+alias ls='lsd'
+alias cat='batcat'
+alias ccat='/bin/cat'
+alias cd='z'
+alias ccd='/bin/cd'
+
+
 #cmd rick roll because why not?
 alias rr='curl -s -L http://bit.ly/10hA8iC | bash'
+alias pwdcp='pwd | clipcopy'
+alias weather='curl wttr.in/Lisbon'
 
 #use nvim as vim
 alias vim='nvim'
 alias nv='nvim'
 alias update='sudo apt update && sudo apt upgrade'
 alias cpg='rsync -avz --progress'
+alias make='remake'
+
+export PATH="$PATH:/media/Dados/liberoDocker/v12.1/Libero/bin64"
+export PATH="$PATH:/media/Dados/liberoDocker/v12.1/ModelSimPro/modeltech/linuxacoem"
+export PATH="$PATH:/media/Dados/liberoDocker/v12.1/SynplifyPro/bin"
+
+# For Floating License from a License Server
+export LM_LICENSE_FILE=1702@localhost:$LM_LICENSE_FILE
+export SNPSLMD_LICENSE_FILE=1702@localhost:$SNPSLMD_LICENSE_FILE
+export LANG=en_US.UTF-8
+# <1702> is the port number
+# <localhost> is the license server host
+#For Node-Locked License
+export LM_LICENSE_FILE=/media/Dados/liberoDocker/common/license.dat:$LM_LICENSE_FILE
+export SNPSLMD_LICENSE_FILE=/media/Dados/liberoDocker/common/license.dat:$SNPSLMD_LICENSE_FILE
+export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/rawOpenCV/
+export LANG=en_US.UTF-8
+# export PATH=/usr/local/microsemi/<Libero_current_rel>/Libero/bin:${PATH}
 
 # Add go executable path to PATH variable
 if [ -d $HOME/go/bin ] ; then  
@@ -293,3 +335,55 @@ fi
 
 eval "$(starship init zsh)"
 
+alias hdl-oss='source /media/Dados/oss-cad-suite/environment'
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# ZSH Autocompete configuration
+# Load zsh-autocomplete first
+source /home/amrm/.oh-my-zsh/others/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# Configure Tab behavior
+bindkey '\t' menu-select
+bindkey "$terminfo[kcbt]" menu-select
+
+# Unbind Ctrl-R
+bindkey -r '^R'
+
+# Disable history menu on arrow keys
+bindkey -M emacs \
+    "^[p"   .history-search-backward \
+    "^[n"   .history-search-forward \
+    "^P"    .up-line-or-history \
+    "^[OA"  .up-line-or-history \
+    "^[[A"  .up-line-or-history \
+    "^N"    .down-line-or-history \
+    "^[OB"  .down-line-or-history \
+    "^[[B"  .down-line-or-history \
+    "^R"    .history-incremental-search-backward \
+    "^S"    .history-incremental-search-forward \
+    #
+bindkey -a \
+    "^P"    .up-history \
+    "^N"    .down-history \
+    "k"     .up-line-or-history \
+    "^[OA"  .up-line-or-history \
+    "^[[A"  .up-line-or-history \
+    "j"     .down-line-or-history \
+    "^[OB"  .down-line-or-history \
+    "^[[B"  .down-line-or-history \
+    "/"     .vi-history-search-backward \
+    "?"     .vi-history-search-forward \
+    #
+
+bindkey '^H' history-search-menu
+zstyle ':autocomplete:history-search:*' list-lines all
+
+#add fzf search
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(zoxide init zsh)"
+
+# Created by `pipx` on 2025-08-03 14:25:19
+export PATH="$PATH:/home/amrm/.local/bin"
