@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Installs zsh + oh-my-zsh (with the AM theme and plugins), starship, and tmux
-# (with TPM and its plugins), then copies the configs from this repo into $HOME.
+# Installs zsh + oh-my-zsh (with the AM theme and plugins), starship, tmux
+# (with TPM and its plugins), alacritty (with Hack Nerd Font and themes), then copies the configs from this repo into $HOME.
 # Safe to re-run: existing installs are skipped, existing configs are backed up.
 set -euo pipefail
 
@@ -100,6 +100,31 @@ install_file "$SRC/.tmux.conf" "$HOME/.tmux.conf"
 clone_or_update https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 info "Installing tmux plugins"
 "$HOME/.tmux/plugins/tpm/bin/install_plugins" || warn "TPM install failed; press prefix (Ctrl+k) + I inside tmux"
+
+############# ALACRITTY #############
+info "Setting up alacritty"
+if command -v alacritty >/dev/null; then
+  echo "alacritty already installed ($(alacritty --version))"
+else
+  sudo apt install -y alacritty || warn "alacritty isn't in apt on this release; install it manually"
+fi
+
+# alacritty.toml uses "Hack Nerd Font"
+if fc-list 2>/dev/null | grep -qi "Hack Nerd Font"; then
+  echo "Hack Nerd Font already installed"
+else
+  info "Installing Hack Nerd Font"
+  sudo apt install -y fontconfig xz-utils
+  FONT_DIR="$HOME/.local/share/fonts/HackNerdFont"
+  mkdir -p "$FONT_DIR"
+  curl -fsSL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.tar.xz \
+    | tar -xJ -C "$FONT_DIR"
+  fc-cache -f "$FONT_DIR"
+fi
+
+install_file "$SRC/.config/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+# alacritty.toml imports ~/.config/alacritty/themes/themes/hyper.toml
+clone_or_update https://github.com/alacritty/alacritty-theme "$HOME/.config/alacritty/themes"
 
 ############# DEFAULT SHELL #############
 ZSH_BIN="$(command -v zsh)"
