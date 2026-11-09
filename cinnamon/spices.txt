@@ -1,0 +1,12 @@
+# <type> <uuid>, downloaded from cinnamon-spices.linuxmint.com by install_cinnamon.sh
+applets betterlock
+applets Cinnamenu@json
+applets force-quit@cinnamon.org
+applets hwmonitor@sylfurd
+applets vboxlauncher@mockturtl
+applets weather@mockturtl
+extensions cinnamon-maximus@fmete
+extensions gTile@shuairan
+extensions workspace-scroller@ori
+themes Adara-Dark
+themes CBlack

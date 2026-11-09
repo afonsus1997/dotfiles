@@ -1,0 +1,15 @@
+{
+    "autoUpdate": {
+        "type": "checkbox",
+        "default": false,
+        "description": "Auto update (slow)",
+        "value": false
+    },
+    "showHeadlessMode": {
+        "type": "checkbox",
+        "default": true,
+        "description": "Show Headless Mode",
+        "value": true
+    },
+    "__md5__": "9fd804645ae6d6ffcaabd20c007c5c1e"
+}

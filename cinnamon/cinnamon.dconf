@@ -1,0 +1,168 @@
+[/]
+alttab-minimized-aware=false
+alttab-switcher-delay=100
+alttab-switcher-style='icons'
+desktop-effects-on-dialogs=true
+desktop-effects-workspace=false
+enabled-applets=['panel1:center:0:menu@cinnamon.org:0', 'panel1:left:0:separator@cinnamon.org:1', 'panel1:right:8:systray@cinnamon.org:3', 'panel1:right:9:xapp-status@cinnamon.org:4', 'panel1:right:10:notifications@cinnamon.org:5', 'panel1:right:11:printers@cinnamon.org:6', 'panel1:right:12:removable-drives@cinnamon.org:7', 'panel1:right:13:keyboard@cinnamon.org:8', 'panel1:right:14:favorites@cinnamon.org:9', 'panel1:right:15:network@cinnamon.org:10', 'panel1:right:16:sound@cinnamon.org:11', 'panel1:right:17:power@cinnamon.org:12', 'panel1:right:18:calendar@cinnamon.org:13', 'panel1:right:19:cornerbar@cinnamon.org:14', 'panel1:left:1:workspace-switcher@cinnamon.org:15', 'panel1:right:6:weather@mockturtl:16', 'panel1:right:3:vboxlauncher@mockturtl:25', 'panel2:center:0:grouped-window-list@cinnamon.org:30', 'panel3:center:0:grouped-window-list@cinnamon.org:31']
+enabled-extensions=['cinnamon-maximus@fmete']
+hotcorner-layout=['expo:true:0', 'expo:true:0', 'scale:false:0', 'desktop:false:0']
+next-applet-id=32
+panel-edit-mode=false
+panel-zone-icon-sizes='[{"panelId":1,"left":0,"center":0,"right":24},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3}]'
+panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 16}, {"left": 28, "center": 28, "right": 28, "panelId": 2}, {"left": 28, "center": 28, "right": 28, "panelId": 3}]'
+panel-zone-text-sizes='[{"panelId":1,"left":0,"center":0,"right":0},{"left":0,"center":0,"right":0,"panelId":2},{"left":0,"center":0,"right":0,"panelId":3}]'
+panels-autohide=['1:false', '2:false', '3:false']
+panels-enabled=['1:0:bottom', '2:0:top', '3:1:left']
+panels-height=['1:27', '2:25', '3:25']
+panels-hide-delay=['1:0', '2:0', '3:0']
+panels-show-delay=['1:0', '2:0', '3:0']
+window-effect-speed=2
+
+[cinnamon-session]
+quit-time-delay=60
+
+[desktop/applications/calculator]
+exec='gnome-calculator'
+
+[desktop/applications/terminal]
+exec='gnome-terminal'
+exec-arg='--'
+
+[desktop/background]
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/linuxmint-wilma/aksenapati_snow_mountain.jpg'
+
+[desktop/background/slideshow]
+delay=15
+image-source='xml:///usr/share/cinnamon-background-properties/linuxmint-wilma.xml'
+
+[desktop/input-sources]
+sources=[('xkb', 'us')]
+
+[desktop/interface]
+cursor-blink-time=1200
+cursor-size=24
+cursor-theme='Bibata-Original-Classic'
+gtk-theme='CBlack'
+icon-theme='Yaru'
+text-scaling-factor=1.0
+toolkit-accessibility=false
+
+[desktop/keybindings]
+custom-list=['custom0', 'custom1', 'custom2', 'custom3']
+
+[desktop/keybindings/custom-keybindings/custom0]
+binding=['<Super>Return']
+command="alacritty -e 'tmux'"
+name='alacritty'
+
+[desktop/keybindings/custom-keybindings/custom1]
+binding=['<Super>d']
+command='rofi -show run #-font "Noto Sans 13"'
+name='rofi'
+
+[desktop/keybindings/custom-keybindings/custom2]
+binding=['<Shift><Super>Return']
+command='nemo'
+name='nemo'
+
+[desktop/keybindings/custom-keybindings/custom3]
+binding=['<Super>w']
+command='rofi -show'
+name='rofi2'
+
+[desktop/keybindings/wm]
+close=['<Alt>F4', '<Shift><Super>q']
+move-to-workspace-1=['<Shift><Super>exclam']
+move-to-workspace-10=['<Shift><Super>parenright']
+move-to-workspace-2=['<Shift><Super>at']
+move-to-workspace-3=['<Shift><Super>numbersign']
+move-to-workspace-4=['<Shift><Super>dollar']
+move-to-workspace-5=['<Shift><Super>percent']
+move-to-workspace-6=['<Shift><Super>dead_circumflex']
+move-to-workspace-7=['<Shift><Super>ampersand']
+move-to-workspace-8=['<Shift><Super>asterisk']
+move-to-workspace-9=['<Shift><Super>parenleft']
+push-tile-left=@as []
+push-tile-right=@as []
+show-desktop=@as []
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-10=['<Super>0']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-to-workspace-5=['<Super>5']
+switch-to-workspace-6=['<Super>6']
+switch-to-workspace-7=['<Super>7']
+switch-to-workspace-8=['<Super>8']
+switch-to-workspace-9=['<Super>9']
+switch-to-workspace-down=['<Super>Left']
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Super>Right']
+
+[desktop/media-handling]
+autorun-never=false
+
+[desktop/notifications]
+notification-duration=4
+
+[desktop/peripherals/keyboard]
+delay=uint32 500
+numlock-state=true
+repeat-interval=uint32 30
+
+[desktop/peripherals/mouse]
+double-click=400
+drag-threshold=8
+speed=0.0
+
+[desktop/peripherals/touchpad]
+speed=0.0
+
+[desktop/screensaver]
+lock-enabled=true
+
+[desktop/sound]
+event-sounds=false
+
+[desktop/wm/preferences]
+button-layout=':close'
+min-window-opacity=30
+num-workspaces=9
+
+[gestures]
+swipe-down-2='PUSH_TILE_DOWN::end'
+swipe-down-3='TOGGLE_OVERVIEW::end'
+swipe-down-4='VOLUME_DOWN::end'
+swipe-left-2='PUSH_TILE_LEFT::end'
+swipe-left-3='WORKSPACE_NEXT::end'
+swipe-left-4='WINDOW_WORKSPACE_PREVIOUS::end'
+swipe-right-2='PUSH_TILE_RIGHT::end'
+swipe-right-3='WORKSPACE_PREVIOUS::end'
+swipe-right-4='WINDOW_WORKSPACE_NEXT::end'
+swipe-up-2='PUSH_TILE_UP::end'
+swipe-up-3='TOGGLE_EXPO::end'
+swipe-up-4='VOLUME_UP::end'
+tap-3='MEDIA_PLAY_PAUSE::end'
+
+[launcher]
+check-frequency=300
+memory-limit=2048
+
+[muffin]
+draggable-border-width=10
+placement-mode='center'
+tile-maximize=true
+workspace-cycle=true
+
+[settings-daemon/peripherals/keyboard]
+numlock-state='on'
+
+[settings-daemon/plugins/color]
+
+[settings-daemon/plugins/xsettings]
+buttons-have-icons=true
+
+[theme]
+name='Adara-Dark'
