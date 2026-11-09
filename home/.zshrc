@@ -70,7 +70,6 @@ autoload zcalc
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 #source $HOME/.oh-my-zsh/plugins/calc/calc.plugin.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -79,6 +78,12 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions vscode colored-man-pages)
 #disabled: zsh-syntax-highlighting
+
+# zsh-syntax-highlighting must load before zsh-autocomplete, or it warns about
+# unhandled ZLE widgets (recent-paths, history-search-menu)
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh-autocomplete must load before oh-my-zsh runs compinit
+source $ZSH/others/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -336,13 +341,9 @@ fi
 eval "$(starship init zsh)"
 
 alias hdl-oss='source /media/Dados/oss-cad-suite/environment'
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-# ZSH Autocompete configuration
-# Load zsh-autocomplete first
-source /home/amrm/.oh-my-zsh/others/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# ZSH Autocompete configuration (plugin itself is loaded before oh-my-zsh above)
 
 # Configure Tab behavior
 bindkey '\t' menu-select
