@@ -58,12 +58,25 @@ fi
 
 ############# OH MY ZSH #############
 info "Installing oh-my-zsh"
-if [ -d "$ZSH_DIR" ]; then
+if [ -f "$ZSH_DIR/oh-my-zsh.sh" ]; then
   echo "oh-my-zsh already installed, skipping"
 else
+  # A ~/.oh-my-zsh without oh-my-zsh.sh is a leftover (e.g. install_configs.sh
+  # copied only the theme into it). The installer refuses to run over it.
+  if [ -d "$ZSH_DIR" ]; then
+    mkdir -p "$BACKUP_DIR"
+    mv "$ZSH_DIR" "$BACKUP_DIR/oh-my-zsh.incomplete"
+    warn "Moved incomplete $ZSH_DIR -> $BACKUP_DIR/oh-my-zsh.incomplete"
+  fi
+  # Download first so a network failure stops the script instead of
+  # silently running an empty installer.
+  OMZ_INSTALLER="$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   # Unattended: don't switch shell, don't launch zsh, don't touch .zshrc.
-  RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c \
-    "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$OMZ_INSTALLER" "" --unattended
+fi
+if [ ! -f "$ZSH_DIR/oh-my-zsh.sh" ]; then
+  warn "oh-my-zsh install failed: $ZSH_DIR/oh-my-zsh.sh not found"
+  exit 1
 fi
 
 info "Installing zsh extensions"
@@ -79,11 +92,6 @@ install_file "$SRC/.oh-my-zsh/themes/AM.zsh-theme" "$ZSH_DIR/themes/AM.zsh-theme
 
 info "Copying .zshrc"
 install_file "$SRC/.zshrc" "$HOME/.zshrc"
-# The repo's .zshrc hardcodes /home/amrm; point it at this machine's $HOME.
-if [ "$HOME" != "/home/amrm" ]; then
-  sed -i "s|/home/amrm|$HOME|g" "$HOME/.zshrc"
-  echo "Rewrote /home/amrm -> $HOME in ~/.zshrc"
-fi
 
 ############# STARSHIP #############
 info "Installing starship"
