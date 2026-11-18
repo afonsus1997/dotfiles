@@ -2,6 +2,14 @@
 
 HOMEDIR=~/
 
+# Install oh-my-zsh BEFORE copying home/, which contains .oh-my-zsh/themes and
+# would otherwise create ~/.oh-my-zsh and make the installer refuse to run.
+if [ ! -f ~/.oh-my-zsh/oh-my-zsh.sh ]; then
+  [ -d ~/.oh-my-zsh ] && mv ~/.oh-my-zsh ~/.oh-my-zsh.incomplete.$(date +%s)
+  echo "Installing oh my zsh"
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
 #make and copy .config
 #mkdir -p $HOMEDIR/.config
 cp -r home/. $HOMEDIR
@@ -19,8 +27,7 @@ echo "https://github.com/infokiller/i3-workspace-groups"
 echo ""
 echo "Installing zsh"
 #install oh my zsh
-echo "Installing oh my zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# (oh my zsh is installed at the top of this script)
 #cp home/.zshrc $HOMEDIR
 #mkdir -p $HOMEDIR/.oh-my-zsh/themes
 #cp -r home/.oh-my-zsh/themes $HOMEDIR/.oh-my-zsh/

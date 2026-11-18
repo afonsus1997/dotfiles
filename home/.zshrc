@@ -7,7 +7,7 @@ zmodload zsh/zprof
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/amrm/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -278,7 +278,7 @@ pip3.7() {
 export PATH="$PATH:/opt/gcc-arm/bin"
 
 #add .local/bin to path
-export PATH="$PATH:/home/armr/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 #things
 if [ -d ~/bin ]; then
@@ -287,7 +287,10 @@ fi
 
 
 
-xset r rate 220 40
+# Key repeat rate; only when there is an X display (not over plain SSH)
+if [[ -n $DISPLAY ]] && (( $+commands[xset] )); then
+  xset r rate 220 40
+fi
 
 #Capsim eviroment
 export CAPSIM=/opt/Capsim_V6
@@ -387,4 +390,3 @@ zstyle ':autocomplete:history-search:*' list-lines all
 eval "$(zoxide init zsh)"
 
 # Created by `pipx` on 2025-08-03 14:25:19
-export PATH="$PATH:/home/amrm/.local/bin"
